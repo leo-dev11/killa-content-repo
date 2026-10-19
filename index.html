@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Killa · Recursos de quechua chanka</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Colores tomados de killa_menu_background.jpeg */
+  :root {
+    --noche: #1b0f25;      /* cerro derecho */
+    --cerro: #2a215c;      /* cerro izquierdo */
+    --cielo: #30286e;      /* cielo oscuro */
+    --cielo-claro: #53709b;
+    --nube: #678ea8;
+    --luna: #f1e476;
+    --luna-borde: #eadc60;
+    --tiza: #d1dbd2;       /* letras de "Killa" */
+    --tarjeta: rgba(48, 40, 110, 0.55);
+    --borde: rgba(103, 142, 168, 0.35);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Nunito", system-ui, sans-serif;
+    color: var(--tiza);
+    background: linear-gradient(180deg, var(--cielo) 0%, var(--cerro) 45%, var(--noche) 100%) fixed;
+    background-color: var(--noche);
+    line-height: 1.5;
+  }
+  a { color: var(--luna); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+  header { position: relative; padding: 56px 0 40px; overflow: hidden; }
+  .luna {
+    position: absolute; top: 28px; right: max(16px, calc(50% - 500px));
+    width: 110px; height: 110px; border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, #fbf3a8, var(--luna) 55%, var(--luna-borde));
+    box-shadow: 0 0 60px rgba(241, 228, 118, 0.35);
+  }
+  h1 {
+    font-family: "Patrick Hand", cursive; font-weight: 400;
+    font-size: clamp(3.5rem, 12vw, 6rem); line-height: 1; margin: 0;
+  }
+  .sub { font-size: 1.15rem; max-width: 34rem; margin: 12px 0 0; color: var(--tiza); opacity: .9; }
+
+  .controles { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 8px; }
+  input[type=search] {
+    flex: 1 1 260px; padding: 12px 16px; border-radius: 999px;
+    border: 1px solid var(--borde); background: rgba(27, 15, 37, .5);
+    color: var(--tiza); font: inherit;
+  }
+  input[type=search]::placeholder { color: var(--nube); }
+  input[type=search]:focus { outline: 2px solid var(--luna); outline-offset: 1px; }
+  .filtros { display: flex; flex-wrap: wrap; gap: 8px; }
+  .filtros button {
+    font: inherit; font-weight: 600; cursor: pointer;
+    padding: 10px 16px; border-radius: 999px;
+    border: 1px solid var(--borde); background: transparent; color: var(--tiza);
+  }
+  .filtros button[aria-pressed=true] { background: var(--luna); color: var(--noche); border-color: var(--luna); }
+
+  .destacados { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 24px 0 8px; }
+  .destacado {
+    padding: 20px; border-radius: 16px;
+    background: linear-gradient(135deg, rgba(241,228,118,.16), rgba(83,112,155,.25));
+    border: 1px solid rgba(241, 228, 118, .4);
+  }
+  .destacado h3 { margin: 0 0 6px; font-family: "Patrick Hand", cursive; font-size: 1.7rem; font-weight: 400; color: var(--luna); }
+  .destacado p { margin: 0; }
+
+  section { margin: 40px 0; }
+  h2 { font-family: "Patrick Hand", cursive; font-weight: 400; font-size: 2rem; margin: 0 0 14px; color: var(--luna); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  .card {
+    display: flex; flex-direction: column; gap: 8px;
+    padding: 16px; border-radius: 14px;
+    background: var(--tarjeta); border: 1px solid var(--borde);
+    backdrop-filter: blur(4px);
+  }
+  .card h3 { margin: 0; font-size: 1.05rem; line-height: 1.35; }
+  .card p { margin: 0; font-size: .95rem; opacity: .9; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 4px; }
+  .tag { font-size: .78rem; padding: 2px 10px; border-radius: 999px; background: rgba(103,142,168,.3); }
+  .tag.chanka { background: rgba(241,228,118,.22); color: var(--luna); }
+  .card a.ir { font-weight: 700; text-decoration: none; }
+  .card a.ir:hover { text-decoration: underline; }
+  .card .pronto { color: var(--nube); font-weight: 600; }
+
+  .vacio { text-align: center; color: var(--nube); padding: 40px 0; }
+  footer { padding: 40px 0 56px; color: var(--nube); font-size: .9rem; border-top: 1px solid var(--borde); margin-top: 48px; }
+  footer p { margin: 6px 0; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="luna" aria-hidden="true"></div>
+    <h1>Killa</h1>
+    <p class="sub">Recursos abiertos para aprender y estudiar el quechua chanka (Ayacucho).</p>
+
+    <div class="destacados">
+      <div class="destacado">
+        <h3>El juego</h3>
+        <p>Novela visual web en quechua chanka y castellano, con chat en el juego. <span class="pronto">Próximamente en itch.io.</span></p>
+      </div>
+      <div class="destacado">
+        <h3>El corpus</h3>
+        <p>118 pasajes bilingües quechua–castellano del guion, con glosario, revisados por un hablante nativo. <span class="pronto">Próximamente.</span></p>
+      </div>
+    </div>
+
+    <div class="controles">
+      <input type="search" id="buscar" placeholder="Buscar recurso, autor o tema…" aria-label="Buscar">
+      <div class="filtros" role="group" aria-label="Filtrar por público">
+        <button data-p="todos" aria-pressed="true">Todo</button>
+        <button data-p="aprender" aria-pressed="false">Quiero aprender</button>
+        <button data-p="leer" aria-pressed="false">Quiero leer o escuchar</button>
+        <button data-p="investigar" aria-pressed="false">Soy investigador</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="contenido"></main>
+<p class="vacio wrap" id="vacio" hidden>No hay recursos que coincidan con tu búsqueda.</p>
+
+<footer class="wrap">
+  <p><strong>Variedad:</strong> Chanka = quechua de Ayacucho (<code>quy</code>), la variedad de Killa. Sureño = agrupa chanka y Cusco-Collao. Otras = varias variedades o una distinta.</p>
+  <p>Proyecto Killa · Actualizado el 16 de octubre de 2026.</p>
+</footer>
+
+<script>
+// v: variedad · a: acceso · p: público
+const SECCIONES = [
+  { titulo: "Aprender desde cero", items: [
+    { n: "Curso introductorio de Quechua Chanka", d: "8 clases grabadas de nivel inicial. Biblioteca Nacional del Perú y Ministerio de Cultura.", v: "Chanka", a: "Gratis", f: "Video", p: ["aprender"], u: "https://www.youtube.com/playlist?list=PLe4DNTZx3LngmX5xSJUuowp5jLL_ZZOui" },
+    { n: "Quechua: manual de enseñanza — Clodoaldo Soto Ruiz", d: "Curso completo de quechua como segunda lengua, con audios (IEP, 3.ª ed.).", v: "Chanka", a: "De pago", f: "Libro", p: ["aprender"], u: "https://iep.org.pe/noticias/novedades-editoriales-del-iep/" },
+    { n: "Qayna, kunan, paqarin — Zariquiey y Córdova", d: "Introducción práctica al quechua chanca para el aula, con material audiovisual (PUCP, 2008).", v: "Chanka", a: "De pago", f: "Libro", p: ["aprender"], u: "https://repositorio.pucp.edu.pe/items/ac6c0dbc-b6e7-4231-870a-87e286a77556" },
+    { n: "Canal IPE: “Cómo se dice”", d: "Videos cortos con saludos, presentaciones y verbos.", v: "Otras", a: "Gratis", f: "Video", p: ["aprender"], u: "https://www.canalipe.gob.pe/noticias/television/aprende-saludos-en-quechua-con-como-se-dice-de-canal-ipe" },
+  ]},
+  { titulo: "Diccionarios y escritura", items: [
+    { n: "Yachakuqkunapa Simi Qullqa (MINEDU)", d: "Diccionario escolar oficial del quechua Ayakuchu Chanka.", v: "Chanka", a: "Gratis", f: "PDF", p: ["aprender"], u: "https://repositorio.minedu.gob.pe/handle/20.500.12799/10380" },
+    { n: "Diccionario funcional quechua–castellano–inglés — Soto Ruiz", d: "Diccionario de referencia del chanka, con ejemplos de uso. Texto completo solo para la comunidad PUCP.", v: "Chanka", a: "En bibliotecas", f: "Libro", p: ["aprender", "investigar"], u: "https://repositorio.pucp.edu.pe/items/b67b6890-6c7b-4ae6-b3b9-86c35d122d13" },
+    { n: "Manual de escritura quechua sureño (MINEDU)", d: "Alfabeto y reglas oficiales de escritura.", v: "Sureño", a: "Gratis", f: "PDF", p: ["aprender"], u: "https://repositorio.minedu.gob.pe/handle/20.500.12799/7190" },
+    { n: "El sistema vocálico del quechua sureño (MINEDU)", d: "Por qué el quechua sureño se escribe con tres vocales (a, i, u).", v: "Sureño", a: "Gratis", f: "PDF", p: ["aprender", "investigar"], u: "https://repositorio.minedu.gob.pe/handle/20.500.12799/10382" },
+    { n: "SoyQuechua", d: "Diccionario por variantes, conjugador de verbos, analizadores y corpus de canciones y cuentos.", v: "Otras", a: "Por confirmar", f: "Web", p: ["aprender", "leer"], u: "https://www.soyquechua.org/" },
+  ]},
+  { titulo: "Leer en quechua", items: [
+    { n: "Biblioteca Quechua Chanka (MINEDU)", d: "Textos escolares, cuentos, literatura y saberes de los pueblos.", v: "Chanka", a: "Gratis", f: "PDF", p: ["leer"], u: "https://www.gob.pe/institucion/minedu/informes-publicaciones/4544363-biblioteca-quechua-chanka" },
+    { n: "Lenguas que unen: glosario multilingüe", d: "Frases frecuentes de comunicación cotidiana (Ministerio de Cultura).", v: "Por confirmar", a: "Gratis", f: "PDF", p: ["leer", "aprender"], u: "https://www.gob.pe/institucion/cultura/informes-publicaciones/7652520-lenguas-que-unen-glosario-multilingue" },
+  ]},
+  { titulo: "El quechua de hoy: música y redes", items: [
+    { n: "Renata Flores", d: "Pop y trap en quechua; artista de Ayacucho.", v: "Por confirmar", f: "Música", p: ["leer"], u: "https://www.instagram.com/renatafloresrivera/" },
+    { n: "Liberato Kani", d: "Rap en quechua.", v: "Por confirmar", f: "Música", p: ["leer"], u: "https://www.instagram.com/liberatokani/" },
+    { n: "Lenin Tamayo (Q-pop)", d: "Pop en quechua con influencia del k-pop.", v: "Por confirmar", f: "Música", p: ["leer"], u: "https://www.instagram.com/lenintamayoqpop/" },
+    { n: "Dilo en Quechua (@diloenquechua)", d: "Divulgación del quechua en Instagram, TikTok y YouTube.", v: "Por confirmar", f: "Redes", p: ["leer"], u: "https://www.youtube.com/@diloenquechua" },
+    { n: "Musquriy (@musquriy)", d: "Contenido en quechua en TikTok e Instagram.", v: "Por confirmar", f: "Redes", p: ["leer"], u: "https://www.instagram.com/musquriy/" },
+    { n: "Amorcha (@amorchaperu)", d: "Divulgación; referencia de uso cotidiano en Killa.", v: "Por confirmar", f: "Redes", p: ["leer"], u: "https://www.youtube.com/@amorchaperu" },
+    { n: "Quechuactivism in Social Media", d: "Mendoza-Mori y Becerra Sánchez (2023), ReVista (Harvard). Lectura sobre este movimiento.", v: "Otras", a: "Gratis", f: "Artículo", p: ["leer", "investigar"], u: "https://revista.drclas.harvard.edu/quechuactivism-in-social-media-digital-content-and-indigenous-language-awareness/" },
+  ]},
+  { titulo: "Para investigadores: datos abiertos", items: [
+    { n: "Corpus de Killa", d: "118 pasajes bilingües quechua–castellano del guion del juego, con glosario.", v: "Chanka", a: "Licencia por definir", f: "Dataset", p: ["investigar"] },
+    { n: "AmericasNLP (español–quechua)", d: "~125 mil pares de oraciones para traducción automática; buena parte de textos religiosos (JW300).", v: "Chanka", a: "Licencia variable", f: "Dataset", p: ["investigar"], u: "https://github.com/AmericasNLP/americasnlp2021/tree/main/data/quechua-spanish" },
+    { n: "FLORES-200", d: "Oraciones traducidas profesionalmente; benchmark estándar (quy_Latn).", v: "Chanka", a: "CC BY-SA 4.0", f: "Dataset", p: ["investigar"], u: "https://github.com/facebookresearch/flores/blob/main/flores200/README.md" },
+    { n: "Common Voice: Quechua Chanka", d: "Audio grabado por hablantes con su transcripción (Mozilla).", v: "Chanka", a: "CC0", f: "Audio", p: ["investigar", "leer"], u: "https://datacollective.mozillafoundation.org/datasets/cmn1q4bb400vno1075pvgxlib" },
+    { n: "Tatoeba", d: "Oraciones cortas cotidianas con traducción; algunas con audio.", v: "Otras", a: "CC BY 2.0 FR", f: "Dataset", p: ["investigar", "aprender"], u: "https://tatoeba.org/es/downloads" },
+    { n: "Siminchik", d: "~97 horas de radio espontánea, parte alineada con castellano.", v: "Sureño", a: "CC BY-NC-ND", f: "Audio", p: ["investigar"], u: "https://zenodo.org/records/3595354" },
+  ]},
+  { titulo: "Juegos", items: [
+    { n: "Killa", d: "Novela visual web en quechua chanka y castellano, con chat en el juego.", v: "Chanka", a: "Gratis", f: "Juego", p: ["aprender", "leer"] },
+    { n: "Hawk & Puma (Niebla Games)", d: "Aventura sobre el cronista Guamán Poma, hecha con una comunidad del Valle Sagrado.", v: "Otras", f: "Juego", p: ["aprender", "leer"], u: "https://nieblagames.itch.io/hawk-and-puma" },
+    { n: "SimiQuechua", d: "Minijuegos de vocabulario: anagramas, sopa de letras, emparejar y más.", v: "Por confirmar", f: "Juego", p: ["aprender"], u: "https://simiquechua.app/juegos/" },
+  ]},
+  { titulo: "Para entender el quechua chanka", items: [
+    { n: "Combinamos el quechua — Amy Firestone (IEP)", d: "Cómo los jóvenes de Ayacucho mezclan quechua y castellano.", v: "Chanka", a: "De pago", f: "Libro", p: ["investigar", "leer"], u: "https://fondoeditorial.iep.org.pe/producto/combinamos-el-quechua-lengua-e-identidad-de-los-jovenes-urbanos-en-el-peru/" },
+    { n: "Tesis doctoral de Amy Firestone (U. of Illinois)", d: "Versión en inglés del libro.", v: "Chanka", a: "Gratis", f: "Tesis", p: ["investigar"], u: "https://www.ideals.illinois.edu/items/42258" },
+    { n: "La formación del quechua ayacuchano — César Itier (2016)", d: "De dónde viene el chanka y en qué se diferencia del cusqueño.", v: "Chanka", a: "Gratis", f: "Artículo", p: ["investigar"], u: "https://www.redalyc.org/pdf/126/12648861003.pdf" },
+  ]},
+];
+
+const $main = document.getElementById("contenido");
+const $vacio = document.getElementById("vacio");
+const $buscar = document.getElementById("buscar");
+let publico = "todos";
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+
+function tarjeta(r) {
+  const tags = [
+    `<span class="tag${r.v === "Chanka" ? " chanka" : ""}">${esc(r.v)}</span>`,
+    r.a && `<span class="tag">${esc(r.a)}</span>`,
+    r.f && `<span class="tag">${esc(r.f)}</span>`,
+  ].filter(Boolean).join("");
+  const enlace = r.u
+    ? `<a class="ir" href="${esc(r.u)}" target="_blank" rel="noopener">Abrir →</a>`
+    : `<span class="pronto">Enlace próximamente</span>`;
+  return `<article class="card"><h3>${esc(r.n)}</h3><p>${esc(r.d)}</p>${enlace}<div class="tags">${tags}</div></article>`;
+}
+
+function render() {
+  const q = norm($buscar.value.trim());
+  let total = 0;
+  $main.innerHTML = SECCIONES.map(s => {
+    const items = s.items.filter(r =>
+      (publico === "todos" || r.p.includes(publico)) &&
+      (!q || norm([r.n, r.d, r.v, r.a, r.f].join(" ")).includes(q)));
+    total += items.length;
+    return items.length ? `<section><h2>${esc(s.titulo)}</h2><div class="grid">${items.map(tarjeta).join("")}</div></section>` : "";
+  }).join("");
+  $vacio.hidden = total > 0;
+}
+
+document.querySelectorAll(".filtros button").forEach(b => b.addEventListener("click", () => {
+  publico = b.dataset.p;
+  document.querySelectorAll(".filtros button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  render();
+}));
+$buscar.addEventListener("input", render);
+render();
+</script>
+</body>
+</html>
